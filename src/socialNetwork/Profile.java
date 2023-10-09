@@ -1,0 +1,58 @@
+package socialNetwork;
+
+public class Profile {
+	String idperson;
+	String name;
+	String lastname;
+	String birthdate;
+	String gender;
+	String birthplace;
+	String home;
+	String studietat;
+	String workplaces;
+	String films;
+	String groupcode;
+	
+	public Profile(String idperson, String name, String lastname, String birthdate, String gender, String birthplace,
+			String home, String studietat, String workplaces, String films, String groupcode) {
+		this.idperson = idperson;
+		this.name = name;
+		this.lastname = lastname;
+		this.birthdate = birthdate;
+		this.gender = gender;
+		this.birthplace = birthplace;
+		this.home = home;
+		this.studietat = studietat;
+		this.workplaces = workplaces;
+		this.films = films;
+		this.groupcode = groupcode;
+	}
+	
+
+	@Override
+	public boolean equals(Object p) {
+		if (this == p)
+			return true;
+		if (p == null)
+			return false;
+		if (getClass() != p.getClass())
+			return false;
+		Profile other = (Profile) p;
+		if (idperson == null) {
+			if (other.idperson != null)
+				return false;
+		} else if (!films.equals(other.films))
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "[idperson=" + idperson + ", name=" + name + ", lastname=" + lastname + ", birthdate=" + birthdate
+				+ ", gender=" + gender + ", birthplace=" + birthplace + ", home=" + home + ", studietat=" + studietat
+				+ ", workplaces=" + workplaces + ", films=" + films + ", groupcode=" + groupcode + "]";
+	}
+	
+	
+}
