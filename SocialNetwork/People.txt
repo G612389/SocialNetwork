@@ -2,7 +2,7 @@ Iker04,Iker,Garcia,15-07-1987,male,Donostia,Madrid,Madrid;Chemistry,Barcelona,Ba
 Oier09,Oier,Irigoyen,09-04-1999,male,Donostia,Irun,Dublin;Mathematics,Madrid,Jurassic Park,G001
 Julen21,Julen,Camello,21-02-2000,male,La Rioja,Donosti,Salamanca;Chinese,Donosti,ET,G001
 Mikel18,Mikel,Hernandez,18-05-1998,male,Cochabamba,Bolivia,Valencia;Music,Irun,The Lion King,G001
-Aiert30,Aiert,Goikoetxea,30-12-1978,male,Donosti,Irun,Eibar;Engeener,Zaragoza,Titanic,G002
+Aiert30,Aiert,Goikoetxea,30-12-1978,male,Donosti,Irun,Eibar;Engineering,Zaragoza,Titanic,G002
 Amuitz16,Amuitz,Rozpide,02-04-1980,male,Bilbo,Bilbo,Oxford;Computer_Science,London,Spider-Man,G002
 Oregui04,Aimar,Oregui,04-04-2000,male,Donosti,Irun,Chicago;Marketing,Bilbao,Gods and Monsters,G002
 Aimar10,Aimar,Perez,14-01-1985,male,Donosti,Donosti,Barcelona;Arts,Barcelona,Independence Day,G002
