@@ -1,4 +1,4 @@
-package socialNetwork;
+package social_network;
 
 public class Functions {
 	

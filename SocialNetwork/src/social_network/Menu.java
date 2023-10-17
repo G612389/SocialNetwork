@@ -1,7 +1,6 @@
-package socialNetwork;
+package social_network;
 
 import java.util.Scanner;
-import socialNetwork.FileLoader;
 
 
 public class Menu {
