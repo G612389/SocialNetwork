@@ -7,6 +7,7 @@ package social_network;
  * 
  * @author G612389
  * @version DSA_2023_2024
+ * @see Profile
  */
 public class UserList {
     private static UserList userListInstance = null;
@@ -33,12 +34,12 @@ public class UserList {
         }
         return userListInstance;
     }
-
+    
     /**
      * Adds a profile to the user list.
      * 
-     * @param profile the profile to be added
-     * @throws IllegalArgumentException if the user list is already full (maximum size is 100)
+     * @param profile the profile to add
+     * @throws IllegalArgumentException if the user list is full or if the profile already exists in the list
      */
     public void addProfile(Profile profile) {
         if (this.size < 100) {
