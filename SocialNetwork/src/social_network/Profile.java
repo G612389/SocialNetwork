@@ -1,9 +1,9 @@
-package socialNetwork;
+package social_network;
 
 public class Profile {
 	// Attributes: Unique ID, name, last name, birthdate, gender, hometown, study places (array), workplaces (array), liked films (array), group code
 	// Methods: Constructor, getters, setters, equals, toString
-	private String ID;
+	private final String ID;
 	private String name;
 	private String lastName;
 	private String birthDate;
@@ -114,6 +114,23 @@ public class Profile {
 		this.groupCode = groupCode.toLowerCase();
 	}
 
-	// TODO: equals() & toString() methods
+	// equals() method: true if the ID is the same
+	@Override
+	public boolean equals(Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (!(object instanceof Profile)) {
+			return false;
+		}
+		Profile profile = (Profile) object;
+		return this.ID.equals(profile.ID);
+	}
+
+	// toString() method: returns a string with all the attributes
+	@Override
+	public String toString() {
+		return "ID: "+this.getID()+"\nName: "+this.getName()+"\nLast Name: "+this.getLastName()+"\nBirth Date: "+this.getBirthDate()+"\nGender: "+this.getGender()+"\nBirth Place: "+this.getBirthPlace()+"\nHome Town: "+this.getHomeTown()+"\nStudied At: "+this.getStudiedAt()+"\nWorked At: "+this.getWorkedAt()+"\nLiked Films: "+this.getLikedFilms()+"\nGroup Code: "+this.getGroupCode();
+	}
 
 }
