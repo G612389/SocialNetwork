@@ -7,6 +7,7 @@ public class Menu {
 		
 	public static void main(String[] strings) {
 		FileLoader fl = new FileLoader();
+		FileExporter fe = new FileExporter();
 		int userChoice;
 		Scanner sc = new Scanner(System.in);
 		userChoice = -1;
@@ -16,6 +17,8 @@ public class Menu {
 			System.out.println("2 - Load 'relationships' ");
 			System.out.println("3 - Print out user list");
 			System.out.println("4 - Print out relationship list");
+			System.out.println("5 - Export user list to file");
+			System.out.println("6 - Export relationship list to file");
 			System.out.println("0 - Quit");
 			try {
 				userChoice = sc.nextInt();
@@ -35,6 +38,12 @@ public class Menu {
 					case 4:
 						RelationshipList.getInstance().printRelationshipList();
 						break;
+					case 5:
+						fe.exportPeople();
+						break;
+					case 6:
+						fe.exportRelationships();
+						break;
 					default:
 						System.out.println("Invalid selection");
 						break;
@@ -46,6 +55,6 @@ public class Menu {
 		}
 
 		sc.close();
-		System.out.println("Program ended: " + java.time.LocalDateTime.now() + ".\n[G612389]");
+		System.out.println("Program ended: " + java.time.LocalDateTime.now() + "\n[G612389]");
 	}
 }

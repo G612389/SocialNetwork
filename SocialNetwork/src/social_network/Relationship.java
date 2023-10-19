@@ -21,8 +21,6 @@ public class Relationship {
      * @param secondUser the second user in the relationship
      */
     public Relationship(Profile firstUser, Profile secondUser) {
-        System.out.println("New relationship between "+firstUser.getID()+" and "+secondUser.getID());
-        System.out.println("There are "+RelationshipList.getInstance().getSize()+" relationships in the list");
         this.firstUser = firstUser;
         this.secondUser = secondUser;
     }
@@ -32,15 +30,20 @@ public class Relationship {
      *
      * @param firstID the ID of the first user in the relationship
      * @param secondID the ID of the second user in the relationship
-     * @throws IllegalArgumentException if either of the IDs is invalid
      */
     public Relationship(String firstID, String secondID) {
         try {
             UserList userList = UserList.getInstance();
-            System.out.println("AAAA: "+firstID+ " " +secondID);
-            new Relationship(userList.getProfileByID(firstID), userList.getProfileByID(secondID));
+            Profile firstUser = userList.getProfileByID(firstID);
+            Profile secondUser = userList.getProfileByID(secondID);
+            if (firstUser == null || secondUser == null) {
+                System.out.println("Invalid ID detected in the following relationship: "+firstID+","+secondID);
+                return;
+            }
+            this.firstUser = firstUser;
+            this.secondUser = secondUser;
         } catch (Exception e) {
-            System.out.println("Invalid ID detected in the following relationship: "+firstID+" "+secondID);
+            System.out.println("Invalid ID detected in the following relationship: "+firstID+","+secondID);
         }
     }
 
