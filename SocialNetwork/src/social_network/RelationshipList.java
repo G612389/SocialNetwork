@@ -120,7 +120,7 @@ public class RelationshipList {
     public void printRelationshipList() {
         System.out.println("Relationship list size: "+this.size);
         System.out.println("Relationship list:");
-        for (int i = 0; i <= this.size; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (this.relationshipList[i] == null) {
                 System.out.println("NULL");
                 continue;
@@ -128,5 +128,4 @@ public class RelationshipList {
             System.out.println(this.relationshipList[i].toString());
         }
     }
-    
 }

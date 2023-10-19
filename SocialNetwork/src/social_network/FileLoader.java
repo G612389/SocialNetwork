@@ -33,14 +33,16 @@ public class FileLoader {
 	 */
 	public void loadPeople() {
 		// Processing file info
-		// Create dialog box
-		JOptionPane.showMessageDialog(null, "Please select a file to load.");
 		// Create a file selector dialog
 		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		fileChooser.showOpenDialog(null);
+		if (fileChooser.getSelectedFile() == null) {
+			JOptionPane.showMessageDialog(null, "No file selected.");
+			return;
+		}
 		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-
 		// Convert file path
 		System.out.println("Selected file path: " + filePath);
 		try{
@@ -50,7 +52,7 @@ public class FileLoader {
 			while (fr.hasNext()){
 				strLine = fr.nextLine();
 				String[] strParts = strLine.split(",");
-				String userID = strParts[0];
+				String userID = strParts[0].toLowerCase();
 				String name = strParts[1];
 				String lastName = strParts[2];
 				String birthDate = strParts[3];
@@ -84,37 +86,43 @@ public class FileLoader {
 			return;
 		}
 		// Processing file info
-		// Create dialog box
-		JOptionPane.showMessageDialog(null, "Please select a file to load.");
 		// Create a file selector dialog
 		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		fileChooser.showOpenDialog(null);
+		if (fileChooser.getSelectedFile() == null) {
+			JOptionPane.showMessageDialog(null, "No file selected.");
+			return;
+		}
 		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
 
 		// Convert file path
 		System.out.println("Selected file path: " + filePath);
 		try {
-			File inputFile = new File( filePath );
-			Scanner fr = new Scanner (inputFile);
+			File inputFile = new File(filePath);
+			Scanner fr = new Scanner(inputFile);
 			String strLine = "";
 			while (fr.hasNext()) {
 				strLine = fr.nextLine();
 				String[] strParts = strLine.split(",");
-				String userID1 = strParts[0];
-				System.out.println(userID1);
-				String userID2 = strParts[1];
-				System.out.println(userID2);
+				String userID1 = strParts[0].toLowerCase();
+				String userID2 = strParts[1].toLowerCase();
 
 				// Create new relationship
 				try {
-					userList.getProfileByID(userID1.toLowerCase());
-					userList.getProfileByID(userID2.toLowerCase());
+					Profile user1 = userList.getProfileByID(userID1.toLowerCase());
+					Profile user2 = userList.getProfileByID(userID2.toLowerCase());
+					if (user1 == null || user2 == null) {
+						System.out.println("Invalid ID detected for relationship " + userID1 + ", " + userID2 + ". Skipping...");
+						continue;
+					}
 				} catch (Exception e) {
 					System.out.println("Invalid ID detected for relationship " + userID1 + ", " + userID2 + ". Skipping...");
 					continue;
 				}
-				relationshipList.addRelationship(new Relationship(userID1.toLowerCase(), userID2.toLowerCase()));
+				Relationship relationship = new Relationship(userID1.toLowerCase(), userID2.toLowerCase());
+				relationshipList.addRelationship(relationship);
 			}
 			fr.close();
 		} catch (FileNotFoundException e) {

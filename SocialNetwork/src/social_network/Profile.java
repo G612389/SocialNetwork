@@ -36,7 +36,7 @@ public class Profile {
 	 * @param groupCode the group code of the profile owner
 	 */
 	public Profile(String ID, String name, String lastName, String birthDate, String gender, String birthPlace, String homeTown, String[] studiedAt, String[] workedAt, String[] likedFilms, String groupCode) {
-		this.ID = ID.toLowerCase();
+		this.ID = ID;
 		this.name = name;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
