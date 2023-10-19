@@ -13,7 +13,7 @@ Javi,Javier,Frias,7-5-1993,male,Arrasate,Zumaia,Donostia,,ET;Ghost Busters;Batma
 Iker,Iker,Salmon,19-4-1979,male,Bilbao,Donostia,Donostia,Bilbao;Pamplona,Batman;ET,G6102
 Alejo,Mikel Alejo,Barcina,1-1-1994,male,Ordizia,Ordizia,Donostia,,Toy Story;The Lion King;Shrek,G6102
 Igor,Igor,Cejudo,23-3-1989,female,Donostia,Donostia,Donostia,Donostia;Amsterdam,ET;Titanic,G6102
-Mike673,Mikel,Garcia,11-8-1980,male,Donostia,Donostia,Teresianas;Santo Tomas,Donostia;Madrid;Paris,Taxi�Driver;Casablanca,G6103
+Mike673,Mikel,Garcia,11-8-1980,male,Donostia,Donostia,Teresianas;Santo Tomas,Donostia;Madrid;Paris,Taxi Driver;Casablanca,G6103
 Jandrol094,Alejandro,Andoain,23-4-1983,male,Moscow,Donostia,La Salle,Donostia;Kiev,Men in Black;American Pie,G6103
 Esti374,Estibaliz,Matsuki,12-7-1988,female,Tokyo,Santiago de Chile,Salesianas;Mendebaldea,Canada;Sahara;Berlin;Lenningrade,Schindler's list;Der Untergang,G6103
 Fran451,Francisco,Zumalakarregui,23-2-1983,male,Errenteria,Frnace,Armentia Ikastola;Koldo Mitxelena;EHU,Aizkorri;Anboto;Madrid,Munich;Brigadas rojas: La banda Baader Meinhof;Operacion Ogro,G6103
