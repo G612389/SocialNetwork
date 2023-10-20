@@ -7,7 +7,7 @@ package social_network;
  * @author G612389
  * @version DSA_2023_2024
  */
-public class Profile {
+public class Profile{
 	private final String ID;
 	private String name;
 	private String lastName;
@@ -147,7 +147,7 @@ public class Profile {
 	 * @return the hometown of the profile owner
 	 */
 	public String getHomeTown() {
-		return homeTown;
+		return homeTown.toLowerCase();
 	}
 
 	/**
@@ -310,4 +310,5 @@ public class Profile {
 		return "ID: "+this.getID()+"\nName: "+this.getName()+"\nLast Name: "+this.getLastName()+"\nBirth Date: "+this.getBirthDate()+"\nGender: "+this.getGender()+"\nBirth Place: "+this.getBirthPlace()+"\nHome Town: "+this.getHomeTown()+"\nStudied At: "+this.getStudiedAtString()+"\nWorked At: "+this.getWorkedAtString()+"\nLiked Films: "+this.getLikedFilmsString()+"\nGroup Code: "+this.getGroupCode()+"\n";
 	}
 
+	
 }

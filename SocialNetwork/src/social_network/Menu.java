@@ -1,13 +1,15 @@
 package social_network;
 
 import java.util.Scanner;
-
+import javax.swing.JOptionPane;
 
 public class Menu {
 		
 	public static void main(String[] strings) {
 		FileLoader fl = new FileLoader();
 		FileExporter fe = new FileExporter();
+		UserList ul = UserList.getInstance();
+		RelationshipList rl = RelationshipList.getInstance();
 		int userChoice;
 		Scanner sc = new Scanner(System.in);
 		userChoice = -1;
@@ -19,6 +21,10 @@ public class Menu {
 			System.out.println("4 - Print out relationship list");
 			System.out.println("5 - Export user list to file");
 			System.out.println("6 - Export relationship list to file");
+			System.out.println("7 - Print relationships for a surname");
+			System.out.println("8 - Print users from birthplace");
+			System.out.println("9 - Print users born between two dates");
+			System.out.println("10 - Print users from hometown list");
 			System.out.println("0 - Quit");
 			try {
 				userChoice = sc.nextInt();
@@ -43,6 +49,22 @@ public class Menu {
 						break;
 					case 6:
 						fe.exportRelationships();
+						break;
+					case 7:
+						String surname = JOptionPane.showInputDialog(null, "Enter a surname to print relationships for: ");
+						ul.printRelationshipsBySurname(surname);
+						break;
+					case 8:
+						String birthplace = JOptionPane.showInputDialog(null, "Enter a birthplace to print users from: ");
+						ul.printPeopleByBirthplace(birthplace);
+						break;
+					case 9:
+						int d1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the first date: "));
+						int d2 = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the second date: "));
+						ul.getPeopleBetweenDates(d1, d2);
+						break;
+					case 10:
+						ul.printPeopleByHometownList();
 						break;
 					default:
 						System.out.println("Invalid selection");

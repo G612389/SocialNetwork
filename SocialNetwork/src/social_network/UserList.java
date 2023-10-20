@@ -110,4 +110,98 @@ public class UserList {
             }
         }
     }
+
+    /**
+     * Prints the relationships for the user with the given surname.
+     * @param surname the surname of the user to print relationships for
+     */
+    public void printRelationshipsBySurname(String surname) {
+        for (int i = 0; i < this.size; i++) {
+            if (this.userList[i].getLastName().equals(surname)) {
+                Relationship[] relationshipList = RelationshipList.getInstance().getRelationshipsByUser(this.userList[i]);
+                System.out.println("Relationships for user @"+this.userList[i].getID());
+                for (int j = 0; j < relationshipList.length; j++) {
+                    if (relationshipList[j] == null) {
+                        continue;
+                    }
+                    System.out.println(relationshipList[j].toString());
+                }
+            }
+        }
+    }
+    
+    /**
+     * Prints the users in the user list who were born in the specified birthplace.
+     * @param birthplace the birthplace to print users for
+     */
+    public void printPeopleByBirthplace(String birthplace) {
+        for (int i = 0; i<this.size; i++){
+            if (this.userList[i].getBirthPlace().equalsIgnoreCase(birthplace)) {
+                System.out.println(this.userList[i].toString());
+            }
+        }
+    }
+
+    /**
+     * Prints the users in the user list who were born between the specified dates.
+     * @param d1 the lower bound of the date range
+     * @param d2 the upper bound of the date range
+     */
+    public void getPeopleBetweenDates(int d1, int d2) {
+        Profile[] profiles = new Profile[this.size];
+        int profileCount = 0;
+
+        for (int i = 0; i < this.size; i++) {
+            int birthYear = Integer.parseInt(this.userList[i].getBirthDate().split("-")[2]);
+
+            // Profile is between the dates
+            if (birthYear >= d1 && birthYear <= d2) {
+                // Save profile in temporary array
+                profiles[profileCount] = this.userList[i];
+                profileCount++;
+            }
+        }
+
+        // Sort the profiles by surname and then by name
+        for (int i = 0; i < profileCount; i++) {
+            Profile tempProfile = profiles[i];
+            int j = i - 1;
+            while (j >= 0 && profiles[j].getLastName().compareTo(tempProfile.getLastName()) > 0) {
+                profiles[j + 1] = profiles[j];
+                j--;
+            }
+            profiles[j + 1] = tempProfile;
+        }
+
+        // Print the sorted profiles
+        for (int i = 0; i < profileCount; i++) {
+            System.out.println(profiles[i].toString());
+        }
+    }
+
+    // TODO: Fix this method
+    // Won't write anything into the console
+    public void getPeopleByHometown(String hometown) {
+        for (int i = 0; i < this.size; i++) {
+            System.out.println(hometown+" "+i);
+            if (userList[i].getHomeTown().equals(hometown)) {
+                System.out.println(userList[i].toString());
+            }
+        }
+    }
+
+    /**
+     * Prints a list of people grouped by their hometown.
+     */
+    public void printPeopleByHometownList() {
+        FileLoader fl = new FileLoader();
+        String[] homeTowns = fl.loadResidential();
+        for (int i = 0; i < homeTowns.length; i++) {
+            if (homeTowns[i] == null) {
+                break;
+            }
+            System.out.println("People from " + homeTowns[i]);
+            getPeopleByHometown(homeTowns[i]);
+        }
+    }
 }

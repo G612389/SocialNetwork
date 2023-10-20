@@ -129,4 +129,48 @@ public class FileLoader {
 			e.printStackTrace();
 		}
 	}
+
+	public String[] loadResidential() {
+		// Processing file info
+		// Create a file selector dialog
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		fileChooser.showOpenDialog(null);
+		if (fileChooser.getSelectedFile() == null) {
+			JOptionPane.showMessageDialog(null, "No file selected.");
+			return null;
+		}
+		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+		// Convert file path
+		System.out.println("Selected file path: " + filePath);
+		try {
+			File inputFile = new File(filePath);
+			Scanner fr = new Scanner(inputFile);
+			String strLine = "";
+			String[] hometowns = new String[100];
+			int count = 0;
+			while (fr.hasNextLine()) {
+				strLine = fr.nextLine();
+				if (count == 0) {
+					hometowns[count] = strLine.toLowerCase();
+					count++;
+					continue;
+				}
+				for (int i = 0; i < count; i++) {
+					if (hometowns[i].equalsIgnoreCase(strLine)) {
+						continue;
+					}
+					hometowns[count] = strLine.toLowerCase();
+					count++;
+				}
+			}
+			fr.close();
+			return hometowns;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
