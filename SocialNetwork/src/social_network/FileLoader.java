@@ -38,10 +38,12 @@ public class FileLoader {
 		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		fileChooser.showOpenDialog(null);
+		// Check if a file was selected
 		if (fileChooser.getSelectedFile() == null) {
 			JOptionPane.showMessageDialog(null, "No file selected.");
 			return;
 		}
+		// Get file path
 		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
 		// Convert file path
 		System.out.println("Selected file path: " + filePath);
@@ -51,6 +53,7 @@ public class FileLoader {
 			String strLine = "";
 			while (fr.hasNext()){
 				strLine = fr.nextLine();
+				// Split the line into parts
 				String[] strParts = strLine.split(",");
 				String userID = strParts[0].toLowerCase();
 				String name = strParts[1];
@@ -91,10 +94,12 @@ public class FileLoader {
 		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		fileChooser.showOpenDialog(null);
+		// Check if a file was selected
 		if (fileChooser.getSelectedFile() == null) {
 			JOptionPane.showMessageDialog(null, "No file selected.");
 			return;
 		}
+		// Get file path
 		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
 
 		// Convert file path
@@ -105,28 +110,81 @@ public class FileLoader {
 			String strLine = "";
 			while (fr.hasNext()) {
 				strLine = fr.nextLine();
+				// Split the line into parts
 				String[] strParts = strLine.split(",");
 				String userID1 = strParts[0].toLowerCase();
 				String userID2 = strParts[1].toLowerCase();
 
 				// Create new relationship
 				try {
+					// Check if the user IDs are valid
 					Profile user1 = userList.getProfileByID(userID1.toLowerCase());
 					Profile user2 = userList.getProfileByID(userID2.toLowerCase());
 					if (user1 == null || user2 == null) {
+						// Invalid user ID
 						System.out.println("Invalid ID detected for relationship " + userID1 + ", " + userID2 + ". Skipping...");
 						continue;
 					}
 				} catch (Exception e) {
+					// Invalid user ID
 					System.out.println("Invalid ID detected for relationship " + userID1 + ", " + userID2 + ". Skipping...");
 					continue;
 				}
+				// Create new relationship
 				Relationship relationship = new Relationship(userID1.toLowerCase(), userID2.toLowerCase());
+				// Add relationship to list
 				relationshipList.addRelationship(relationship);
 			}
+			// Close file
 			fr.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String[] loadResidential() {
+		// Processing file info
+		// Create a file selector dialog
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("SocialNetwork - Specify a file to load");
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		fileChooser.showOpenDialog(null);
+		// Check if a file was selected
+		if (fileChooser.getSelectedFile() == null) {
+			JOptionPane.showMessageDialog(null, "No file selected.");
+			return null;
+		}
+		// Get file path
+		String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+		// Convert file path
+		System.out.println("Selected file path: " + filePath);
+		try {
+			File inputFile = new File(filePath);
+			Scanner fr = new Scanner(inputFile);
+			String strLine = "";
+			String[] hometowns = new String[100];
+			int count = 0;
+			while (fr.hasNextLine()) {
+				strLine = fr.nextLine();
+				if (count == 0) {
+					hometowns[count] = strLine.toLowerCase();
+					count++;
+					continue;
+				}
+				for (int i = 0; i < count; i++) {
+					if (hometowns[i].equalsIgnoreCase(strLine)) {
+						continue;
+					}
+					hometowns[count] = strLine.toLowerCase();
+					count++;
+				}
+			}
+			fr.close();
+			return hometowns;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

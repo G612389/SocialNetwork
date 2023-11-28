@@ -21,11 +21,11 @@ ainhize90,Ainhize,Goenaga,8-1-1990,female,Donostia,Donostia,Peña Florida;Usandi
 markel94,Markel,Sanz,14-9-1994,male,Donostia,Donostia,Zubiri-Manteo,London;Euskadi,Gladiator,G6104
 igor89,Igor,Cortes,23-3-1989,male,Donostia,Donostia,Axular-Lizeoa,Euskadi;Amsterdam,ET;Titanic,G6104
 asdfa59,Asdrubal,Farruquito,8-8-1959,male,Donostia,Donostia,Jesuitinas,Nigeria;Colombia,Thirteen;Titanic,G6104
-Aitor001,Aitor,Iturrioz,29-06-1988,male,Zumarraga,Donosti,EHU,Computer_Science,Persona,G6105
-Markel001,Markel,Saez_de_Jauregui,02-08-1993,male,Elorrio,Donosti,EHU,Computer_Science,El_Bueno_El_Feo_y_el_Malo, G6105
-Olatz001,Olatz,Castano,15-11-1994,female,Barakaldo,Donosti,EHU,Computer_Science,Kick-Ass,G6105
-Markel002,Markel,Chen,01-01-1990,male,Bacelona,Bola�os_de_Calatraba,Donosti,Cooking,Penguin,G6105
-Maria001,Maria,Garcia,05-06-1994,female,Eibar,Donosti,EHU,Computer_Science,Despicable_Me,G6105
+Aitor001,Aitor,Iturrioz,29-06-1988,male,Zumarraga,Donostia,EHU,Computer_Science,Persona,G6105
+Markel001,Markel,Saez_de_Jauregui,02-08-1993,male,Elorrio,Donostia,EHU,Computer_Science,El_Bueno_El_Feo_y_el_Malo, G6105
+Olatz001,Olatz,Castano,15-11-1994,female,Barakaldo,Donostia,EHU,Computer_Science,Kick-Ass,G6105
+Markel002,Markel,Chen,01-01-1990,male,Bacelona,Bolanos_de_Calatraba,Donostia,Cooking,Penguin,G6105
+Maria001,Maria,Garcia,05-06-1994,female,Eibar,Donostia,EHU,Computer_Science,Despicable_Me,G6105
 Carla001,Carla,Aldabaldetrecu,4-11-1994,female,Donostia,Donostia,UPV,Donostia,Despicable_Me;Grown_Ups,G6106
 Laura001,Laura,Gran,19-6-1994,female,Donostia,Donostia,UPV,Donostia,Despicable_Me;Agora,G6106
 Olivia002,Olivia,Olazabal,28-3-1994,female,Irun,Irun,UPV,Donostia,Despicable_Me;Dear_John,G6106

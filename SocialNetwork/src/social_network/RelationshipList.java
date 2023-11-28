@@ -49,7 +49,7 @@ public class RelationshipList {
             // I'll fix it later™
             for (int i = 0; i < this.size; i++) {
                 if (this.relationshipList[i].equals(relationship)) {
-                    throw new IllegalArgumentException("Relationship already exists");
+                    System.out.println("Found a relationship that already existed. Skipping...");
                 }
             }
             
