@@ -7,7 +7,7 @@ package social_network;
  * @author G612389
  * @version DSA_2023_2024
  */
-public class Profile{
+public class Profile {
 	private final String ID;
 	private String name;
 	private String lastName;
