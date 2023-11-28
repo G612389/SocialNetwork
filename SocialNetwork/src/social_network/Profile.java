@@ -174,14 +174,24 @@ public class Profile{
 	 * @see #getStudiedAt()
 	 */
 	public String getStudiedAtString() {
+		// Create a string representation of the studied at array
 		String studiedAtString = "";
+
+		// Loop through the studied at array
 		for (int i = 0; i < this.studiedAt.length; i++) {
+			// Add the current educational institution to the string
 			studiedAtString += this.studiedAt[i];
+
+			// Add a comma if the current educational institution is not the last educational institution in the array
 			if (i < this.studiedAt.length - 1) {
 				studiedAtString += ", ";
 			}
 		}
+
+		// Add a period to the end of the string
 		studiedAtString += ".";
+
+		// Return the string
 		return studiedAtString;
 	}
 
@@ -209,14 +219,23 @@ public class Profile{
 	 * @see #getWorkedAt()
 	 */
 	public String getWorkedAtString() {
+		// Create a string representation of the worked at array
 		String workedAtString = "";
+
+		// Loop through the worked at array
 		for (int i = 0; i < this.workedAt.length; i++) {
+			// Add the current workplace to the string
 			workedAtString += this.workedAt[i];
+
+			// Add a comma if the current workplace is not the last workplace in the array
 			if (i < this.workedAt.length - 1) {
 				workedAtString += ", ";
 			}
 		}
+
+		// Add a period to the end of the string
 		workedAtString += ".";
+		// Return the string
 		return workedAtString;
 	}
 
@@ -244,14 +263,26 @@ public class Profile{
 	 * @see #getLikedFilms()
 	 */
 	public String getLikedFilmsString() {
+		// Sort the liked films array
+		this.sortLikedFilms();
+
+		// Create a string representation of the liked films array
 		String likedFilmsString = "";
+
+		// Loop through the liked films array
 		for (int i = 0; i < this.likedFilms.length; i++) {
+			// Add the current film to the string
 			likedFilmsString += this.likedFilms[i];
+
+			// Add a comma if the current film is not the last film in the array
 			if (i < this.likedFilms.length - 1) {
 				likedFilmsString += ", ";
 			}
 		}
+		// Add a period to the end of the string
 		likedFilmsString += ".";
+
+		// Return the string
 		return likedFilmsString;
 	}
 
@@ -289,9 +320,11 @@ public class Profile{
 	 */
 	@Override
 	public boolean equals(Object object) {
+		// Check if the object is null or not a Profile object
 		if (object == null) {
 			return false;
 		}
+
 		if (!(object instanceof Profile)) {
 			return false;
 		}
@@ -310,5 +343,49 @@ public class Profile{
 		return "ID: "+this.getID()+"\nName: "+this.getName()+"\nLast Name: "+this.getLastName()+"\nBirth Date: "+this.getBirthDate()+"\nGender: "+this.getGender()+"\nBirth Place: "+this.getBirthPlace()+"\nHome Town: "+this.getHomeTown()+"\nStudied At: "+this.getStudiedAtString()+"\nWorked At: "+this.getWorkedAtString()+"\nLiked Films: "+this.getLikedFilmsString()+"\nGroup Code: "+this.getGroupCode()+"\n";
 	}
 
-	
+	/**
+	 * Returns true if this profile has the same liked films as the given profile.
+	 * @param profile the profile to compare to this profile
+	 * @return true if this profile has the same liked films as the given profile, false otherwise
+	 */
+	public boolean hasSameProfile(Profile profile) {
+		// Check if the liked films arrays are the same length
+		if (this.getLikedFilms().length != profile.getLikedFilms().length) {
+			return false;
+		}
+		// Sort both liked films arrays
+		this.sortLikedFilms();
+		profile.sortLikedFilms();
+
+		// Compare the liked films arrays
+		for (int i = 0; i < this.getLikedFilms().length; i++) {
+			if (!this.getLikedFilms()[i].equals(profile.getLikedFilms()[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Sorts the liked films of this profile by name.
+	 */
+	public void sortLikedFilms() {
+		// Get the liked films array
+		String[] likedFilms = this.getLikedFilms();
+
+		for (int i = 0; i < likedFilms.length; i++) {
+			for (int j = i + 1; j < likedFilms.length; j++) {
+				// Swap the films if the current film is greater than the next film
+				if (likedFilms[i].compareTo(likedFilms[j]) > 0) {
+					// Create a temporary variable to store the current film
+					String temp = likedFilms[i];
+					// Swap the films
+					likedFilms[i] = likedFilms[j];
+					likedFilms[j] = temp;
+				}
+			}
+		}
+		// Set the liked films array
+		this.setLikedFilms(likedFilms);
+	}
 }
