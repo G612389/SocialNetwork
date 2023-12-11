@@ -42,7 +42,7 @@ public class UserList {
      * @throws IllegalArgumentException if the user list is full or if the profile already exists in the list
      */
     public void addProfile(Profile profile) {
-        if (this.size < 100) {
+        if (this.size < this.getUserList().length) {
             // Check if the profile already exists
             for (int i = 0; i < this.size; i++) {
                 if (this.userList[i].equals(profile)) {
@@ -61,7 +61,6 @@ public class UserList {
      * Returns the profile of the user with the specified ID.
      * @param ID the ID of the user whose profile is to be returned
      * @return the profile of the user with the specified ID
-     * @throws IllegalArgumentException if the specified ID is invalid
      */
     public Profile getProfileByID(String ID) {
         for (int i = 0; i < this.size; i++) {
@@ -69,7 +68,11 @@ public class UserList {
                 return this.userList[i];
             }
         }
-        throw new IllegalArgumentException("Invalid ID");
+        // No profile found
+        System.out.println("Invalid ID detected. Skipping... (ID: " + ID + ")");
+
+        // Return null if no profile is found
+        return null;
     }
 
     /**

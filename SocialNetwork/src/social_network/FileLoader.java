@@ -160,23 +160,41 @@ public class FileLoader {
 		// Convert file path
 		System.out.println("Selected file path: " + filePath);
 		try {
+			// Open file
 			File inputFile = new File(filePath);
 			Scanner fr = new Scanner(inputFile);
+
+			// Empty string for line
 			String strLine = "";
+
+			// Create hometown array
 			String[] hometowns = new String[100];
+
+			// Initialize counter
 			int count = 0;
+
+			// Get UserList instance
+			UserList ul = UserList.getInstance();
+
 			while (fr.hasNextLine()) {
+				// Read line
 				strLine = fr.nextLine();
+
+				// Search for the hometown of the user
+				String hometown = ul.getProfileByID(strLine.toLowerCase()).getHomeTown();
+
+				// Array is empty
 				if (count == 0) {
-					hometowns[count] = strLine.toLowerCase();
+					// Enter the hometown in the first position
+					hometowns[count] = hometown;
 					count++;
 					continue;
 				}
 				for (int i = 0; i < count; i++) {
-					if (hometowns[i].equalsIgnoreCase(strLine)) {
+					if (hometowns[i].equalsIgnoreCase(hometown)) {
 						continue;
 					}
-					hometowns[count] = strLine.toLowerCase();
+					hometowns[count] = hometown;
 					count++;
 				}
 			}
