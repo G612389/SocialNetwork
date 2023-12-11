@@ -235,4 +235,45 @@ public class UserList {
             getPeopleByHometown(homeTowns[i]);
         }
     }
+
+    /**
+     * Print if both users have the same liked films
+     * @param user1 First user
+     * @param user2 Second user
+     */
+    public void printSameProfile(String user1, String user2) {
+        Profile pr = getProfileByID(user1);
+        Profile pr2 = getProfileByID(user2);
+
+        if (pr.hasSameProfile(pr2)) {
+            System.out.println(user1 + " & " + user2 + " have the same profile!");
+        } else {
+            System.out.println(user1 + " & " + user2 + " don't have the same profile!");
+        }
+    }
+
+
+    /**
+     * Print users that like the same films as the input
+     * @param userID User to check films for
+     */
+    public void printSameProfile(String userID) {
+        Profile pr = getProfileByID(userID);
+        int count = 0;
+
+        for (Profile profile : this.userList) {
+            // Prevention of NullPointerException
+            if (profile == null) break;
+
+            // Check if both ID are different (same profile would always return true for hasSameProfile() method)
+            if (!userID.equals(profile.getID())) {
+                if (pr.hasSameProfile(profile)) {
+                    System.out.println(userID + " & " + profile.getID());
+                    count++;
+                }
+            }
+        }
+
+        if (count == 0) System.out.println("No users found with the same profile.");
+    }
 }

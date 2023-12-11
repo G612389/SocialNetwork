@@ -25,6 +25,7 @@ public class Menu {
 			System.out.println("8 - Print users from birthplace");
 			System.out.println("9 - Print users born between two dates");
 			System.out.println("10 - Print users from hometown list");
+			System.out.println("11 - Print users with the same profile");
 			System.out.println("0 - Quit");
 			try {
 				userChoice = sc.nextInt();
@@ -65,6 +66,10 @@ public class Menu {
 						break;
 					case 10:
 						ul.printPeopleByHometownList();
+						break;
+					case 11:
+						String userID = JOptionPane.showInputDialog(null, "Enter a user ID to check: ");
+						ul.printSameProfile(userID);
 						break;
 					default:
 						System.out.println("Invalid selection");
