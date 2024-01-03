@@ -29,6 +29,9 @@ public class Menu {
 			System.out.println("12 - Print shortest path between two users (BFS))");
 			System.out.println("13 - Print other path between two users (DFS)");
 			System.out.println("0 - Quit");
+			System.out.println("----------------------");
+			System.out.print("Enter your choice: ");
+			
 			try {
 				userChoice = sc.nextInt();
 				switch (userChoice) {
