@@ -1,5 +1,7 @@
 package social_network;
 
+import java.util.List;
+
 /**
  * The UserList class represents a list of user profiles in a social network.
  * It is implemented as a singleton to ensure that there is only one instance of the list.
@@ -275,5 +277,117 @@ public class UserList {
         }
 
         if (count == 0) System.out.println("No users found with the same profile.");
+    }
+
+    /**
+     * Finds the shortest path between two users in the social network.
+     * 
+     * @param user1 the ID of the first user
+     * @param user2 the ID of the second user
+     */
+    public void showShortestPath(String user1, String user2) {
+        Profile pr1 = getProfileByID(user1);
+        Profile pr2 = getProfileByID(user2);
+
+        // Check if the profiles exist
+        if (pr1 == null || pr2 == null) {
+            System.out.println("Invalid user ID.");
+            return;
+        }
+
+        // Create a new graph
+        Graph graph = new Graph();
+
+        // Add all the users to the graph
+        for (Profile profile : this.userList) {
+            // Check if the end of the list has been reached
+            if (profile == null) {
+                break;
+            }
+
+            // Add the user to the graph
+            graph.addVertex(profile.getID());
+        }
+
+        // Add all the relationships to the graph
+        for (Relationship relationship : RelationshipList.getInstance().getRelationshipList()) {
+            // Check if the end of the list has been reached
+            if (relationship == null) {
+                break;
+            }
+
+            graph.addEdge(relationship.getFirstUser().getID(), relationship.getSecondUser().getID());
+        }
+
+        // Get the shortest path from the first user to the second user
+        List<String> path = graph.getShortestPath(pr1, pr2);
+
+        // Check if a path was found
+        if (path.size() == 0) {
+            System.out.println("No path found.");
+            return;
+        }
+
+        // Print the path
+        System.out.println("BFS: Path from " + user1 + " to " + user2 + ":");
+        for (int i = 0; i < path.size(); i++) {
+            if (path.get(i) == null) {
+                break;
+            }
+            System.out.println(path.get(i));
+        }
+    }
+
+    public void showOtherPath(String user1, String user2) {
+        Profile pr1 = getProfileByID(user1);
+        Profile pr2 = getProfileByID(user2);
+
+        // Check if the profiles exist
+        if (pr1 == null || pr2 == null) {
+            System.out.println("Invalid user ID.");
+            return;
+        }
+
+        // Create a new graph
+        Graph graph = new Graph();
+
+        // Add all the users to the graph
+        for (Profile profile : this.userList) {
+            // Check if the end of the list has been reached
+            if (profile == null) {
+                break;
+            }
+
+            // Add the user to the graph
+            graph.addVertex(profile.getID());
+        }
+
+        // Add all the relationships to the graph
+        for (Relationship relationship : RelationshipList.getInstance().getRelationshipList()) {
+            // Check if the end of the list has been reached
+            if (relationship == null) {
+                break;
+            }
+
+            graph.addEdge(relationship.getFirstUser().getID(), relationship.getSecondUser().getID());
+        }
+
+        // Get a path from the first user to the second user using DFS
+        List<String> path = graph.getOtherPath(pr1, pr2);
+
+        // Check if a path was found
+        if (path.size() == 0) {
+            System.out.println("No path found.");
+            return;
+        }
+
+        // Print the path
+        System.out.println("DFS: Path from " + user1 + " to " + user2 + ":");
+        for (int i = 0; i < path.size(); i++) {
+            if (path.get(i) == null) {
+                break;
+            }
+            System.out.println(path.get(i));
+        }
     }
 }

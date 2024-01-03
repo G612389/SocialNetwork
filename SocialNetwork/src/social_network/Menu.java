@@ -26,6 +26,8 @@ public class Menu {
 			System.out.println("9 - Print users born between two dates");
 			System.out.println("10 - Print users from hometown list");
 			System.out.println("11 - Print users with the same profile");
+			System.out.println("12 - Print shortest path between two users (BFS))");
+			System.out.println("13 - Print other path between two users (DFS)");
 			System.out.println("0 - Quit");
 			try {
 				userChoice = sc.nextInt();
@@ -70,6 +72,16 @@ public class Menu {
 					case 11:
 						String userID = JOptionPane.showInputDialog(null, "Enter a user ID to check: ");
 						ul.printSameProfile(userID);
+						break;
+					case 12:
+						String user1 = JOptionPane.showInputDialog(null, "Enter the first user ID");
+						String user2 = JOptionPane.showInputDialog(null, "Enter the second user ID");
+						ul.showShortestPath(user1, user2);
+						break;
+					case 13:
+						String user3 = JOptionPane.showInputDialog(null, "Enter the first user ID");
+						String user4 = JOptionPane.showInputDialog(null, "Enter the second user ID");
+						ul.showOtherPath(user3, user4);
 						break;
 					default:
 						System.out.println("Invalid selection");
