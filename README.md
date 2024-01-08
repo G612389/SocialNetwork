@@ -95,5 +95,5 @@ Distributed under the GNU General Public License v3.0 (or later). See [LICENSE](
 ## Authors
 
 * [Bartolumiu](https://github.com/Bartolumiu/)
-* [DavoAGD](https://github.com/DagoAGD/)
+* [DavoAGD](https://github.com/DavoAGD/)
 * [G612389](https://github.com/G612389/)
